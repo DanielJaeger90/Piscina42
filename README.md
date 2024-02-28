@@ -1,37 +1,93 @@
+# Programa para imprimir un patrón en la consola
 
-Aquí hay una descripción de tu programa:
+Este programa en C imprime un patrón en la consola utilizando la función `print_line` y la función `rush`.
 
-Función print_line:
+## Funciones
 
-Esta función toma cuatro argumentos: x, izq, medio, y dcha.
-Imprime una línea del patrón en la consola.
-Comienza imprimiendo el carácter izq.
-Luego, imprime el carácter medio repetidamente x - 2 veces (si x > 1).
-Finalmente, imprime el carácter dcha (si x > 1), seguido de un salto de línea.
-Función rush:
+### `void ft_putchar(char c);`
 
-Esta función toma dos argumentos x e y, que representan las dimensiones del patrón a imprimir.
-Primero verifica si tanto x como y son mayores que 0.
-Llama a print_line para imprimir la primera línea del patrón utilizando los caracteres 'A', 'B', y 'C'.
-Luego, mediante un bucle, imprime las líneas intermedias del patrón, que están compuestas por el carácter 'B' en los bordes y espacios en el medio.
-Finalmente, imprime la última línea del patrón utilizando los caracteres 'C', 'B', y 'A'.
+Esta función imprime un solo carácter en la consola.
 
+### `void print_line(int x, int izq, int medio, int dcha);`
 
+Esta función imprime una línea del patrón en la consola.
 
+- `x`: La longitud de la línea.
+- `izq`: El carácter que representa el borde izquierdo.
+- `medio`: El carácter que representa el contenido de la línea.
+- `dcha`: El carácter que representa el borde derecho.
 
-Aquí está la representación visual del patrón:
+### `void rush(int x, int y);`
 
-ABBBBBBBBC
-B        B
-B        B
-B        B
-B        B
-B        B
-B        B
-B        B
-B        B
-CBBBBBBBBA
-El borde superior e inferior están formados por 'A' y 'C' respectivamente.
-Los bordes laterales están formados por 'B'.
-El interior del rectángulo está lleno de espacios.
-Este patrón tiene una anchura de x y una altura de y, donde x es el número de columnas y y es el número de filas especificadas al llamar a la función rush.
+Esta función imprime el patrón completo en la consola.
+
+- `x`: El ancho del patrón.
+- `y`: La altura del patrón.
+
+## Instrucciones de Uso
+
+1. Implementa la función `ft_putchar` para que imprima un solo carácter en la consola.
+2. Ejecuta la función `rush` con los parámetros adecuados para imprimir el patrón en la consola.
+
+## Ejemplo
+
+```c
+#include <stdio.h>
+
+void ft_putchar(char c);
+
+void print_line(int x, int izq, int medio, int dcha)
+{
+    int espacio;
+
+    espacio = 1;
+    if (x > 0)
+    {
+        ft_putchar(izq);
+    }
+    while (espacio < (x - 1))
+    {
+        ft_putchar(medio);
+        espacio++;
+    }
+    if (x > 1)
+    {
+        ft_putchar(dcha);
+    }
+    ft_putchar('\n');
+}
+
+void rush(int x, int y)
+{
+    int espacio;
+
+    espacio = 1;
+    if (x > 0 && y > 0)
+    {
+        print_line(x, 'A', 'B', 'C');
+    }
+    while (espacio < y - 1 && x > 0)
+    {
+        print_line(x, 'B', ' ', 'B');
+        espacio++;
+    }
+    if (y > 1 && x > 0)
+    {
+        print_line(x, 'C', 'B', 'A');
+    }
+}
+
+int main()
+{
+    rush(5, 3); // Ejemplo de uso: imprime un patrón de 5x3 en la consola
+    return 0;
+}
+```
+
+## Notas
+
+- Asegúrate de implementar la función `ft_putchar` adecuadamente para que funcione correctamente.
+- Puedes ajustar los parámetros de la función `rush` para imprimir patrones de diferentes tamaños.
+- Este programa es útil para crear patrones simples en la consola con caracteres específicos.
+
+¡Disfruta del patrón en la consola!o de filas especificadas al llamar a la función rush.
